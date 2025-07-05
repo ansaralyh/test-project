@@ -1,0 +1,17 @@
+# Use a imagem oficial do Go como base
+FROM golang:1.17-alpine
+
+# Defina o diretório de trabalho dentro do contêiner
+WORKDIR /app
+
+# Copie o código Go para o contêiner
+COPY server.go .
+
+# Compile o código Go
+RUN go build -o server server.go
+
+# Exponha a porta 80
+EXPOSE 80
+
+# Defina o comando para executar o servidor Go
+CMD ["/app/server"]

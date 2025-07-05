@@ -1,0 +1,35 @@
+.save-button {
+  background-color: #28a745;
+  border-color: #28a745;
+
+  &:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+  }
+
+  &:disabled {
+    background-color: #cccccc;
+    border-color: #cccccc;
+  }
+}
+
+.ant-upload-text__information {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0;
+}
+
+.ant-button-remove-image {
+  // margin-top: 20px;
+  cursor: pointer;
+}
+
+.ant-button-remove-image:hover {
+  color: red;
+}
+
+.ant-row {
+  align-items: center;
+}

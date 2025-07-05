@@ -1,0 +1,40 @@
+# Development Docker Compose Override
+# Use with: docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
+
+version: "3.5"
+services:
+  # Development overrides for easier debugging
+  backend:
+    ports:
+      - "7070:7070"  # Expose backend port for direct access
+    environment:
+      - GIN_MODE=debug
+    volumes:
+      - ./backend:/app  # Mount source code for hot reload (if supported)
+
+  frontend:
+    ports:
+      - "4200:80"  # Expose frontend port for direct access
+
+  postgres-idp:
+    ports:
+      - "5433:5432"  # Expose IDP database for external tools
+
+  postgres-automation:
+    ports:
+      - "5434:5432"  # Expose automation database for external tools
+
+  redis:
+    ports:
+      - "6379:6379"  # Expose Redis for external tools
+
+  # Add development tools
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8080:8080"
+    networks:
+      - idp_network
+      - automation_hub_network
+
